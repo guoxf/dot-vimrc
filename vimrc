@@ -1,7 +1,34 @@
 source ~/.vim/bundles.vim
 
+" -----------------------------------------------------------------------------  
+"  < 判断操作系统是否是 Windows 还是 Linux >
+" -----------------------------------------------------------------------------  
+let g:iswindows = 0
+let g:islinux = 0
+if(has("win32") || has("win64") || has("win95") || has("win16"))
+    let g:iswindows = 1
+else
+    let g:islinux = 1
+endif
+
+" -----------------------------------------------------------------------------  
+"  < 判断是终端还是 Gvim >
+" -----------------------------------------------------------------------------  
+if has("gui_running")
+    let g:isGUI = 1
+else
+    let g:isGUI = 0
+endif
+
 " encoding dectection
+"内部编码设置为utf-8
+set encoding=utf-8
+"设置新建文件的编码
+set fenc=utf-8
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+"当前文件编码
+set fileencoding=utf-8
+set termencoding=utf-8
 
 " enable filetype dectection and ft specific plugin/indent
 filetype plugin indent on
@@ -14,7 +41,8 @@ syntax on
 "--------
 " color scheme
 set background=dark
-color solarized
+colorscheme molokai
+"color solarized
 
 " highlight current line
 au WinLeave * set nocursorline nocursorcolumn
@@ -249,7 +277,14 @@ nnoremap ; :
 if has("gui_running")
     set go=aAce  " remove toolbar
     "set transparency=30
-    set guifont=Monaco:h13
+    if g:iswindows==1
+        set guifont=Source_Code_Pro:h10
+        source $VIMRUNTIME/delmenu.vim
+        source $VIMRUNTIME/menu.vim
+        language messages zh_CN.utf-8
+    else
+        set guifont=Monaco:h13
+    endif
     set showtabline=2
     set columns=140
     set lines=40
@@ -266,3 +301,20 @@ if has("gui_running")
     map <D-9> 9gt
     map <D-0> :tablast<CR>
 endif
+
+" vim-go custom mappings
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+let g:go_fmt_command = "goimports"
+" set mapleader
+let mapleader = ","
