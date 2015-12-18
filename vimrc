@@ -318,3 +318,6 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 let g:go_fmt_command = "goimports"
 " set mapleader
 let mapleader = ","
+
+" NERDTree忽略指定文件或目录
+let NERDTreeIgnore=['node_modules$[[dir]]']
