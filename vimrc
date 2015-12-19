@@ -29,6 +29,8 @@ set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 "当前文件编码
 set fileencoding=utf-8
 set termencoding=utf-8
+set nobackup
+set noswapfile
 
 " enable filetype dectection and ft specific plugin/indent
 filetype plugin indent on
@@ -321,3 +323,13 @@ let mapleader = ","
 
 " NERDTree忽略指定文件或目录
 let NERDTreeIgnore=['node_modules$[[dir]]']
+
+"
+au BufRead,BufNewFile *.ts  setlocal filetype=typescript
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+noremap <F7> :Autoformat<CR>

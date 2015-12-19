@@ -49,6 +49,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'junegunn/vim-easy-align'
 
 "-------------
 " Other Utils
@@ -71,6 +72,9 @@ Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'nono/jquery.vim'
+Bundle "icholy/typescript-tools.git"
+Bundle 'leafgarland/typescript-vim'
+Bundle 'Chiel92/vim-autoformat'
 " Bundle 'groenewege/vim-less'
 " Bundle 'wavded/vim-stylus'
 " Bundle 'nono/vim-handlebars'
